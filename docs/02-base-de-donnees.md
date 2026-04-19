@@ -18,7 +18,8 @@ sudo apt update && sudo apt install -y postgresql postgresql-contrib
 sudo systemctl status postgresql
 ```
 
-![PostgreSQL running](docs/img/Postgresql-running.png)
+![PostgreSQL running](img/Postgresql-running.png)
+
 ---
 
 ## Création de la base et de l'utilisateur
@@ -73,11 +74,11 @@ sudo systemctl restart postgresql
 sudo ss -tlnp | grep 5432
 ```
 
-![PostgreSQL Listenig ](docs/img/Postgresql-ecoute-sur-tout-les-interface.png)
+![PostgreSQL Listenig ](img/Postgresql-ecoute-sur-tout-les-interface.png)
 ### Test de connexion
 
 ```bash
 psql -h 10.10.0.20 -U k3s -d k3s -c "\conninfo"
 ```
 
-![PostgreSQL Test  ](k3s-lab/docs/img/Postgresql-Teste-de-connexion.png)
+![PostgreSQL Test  ](img/Postgresql-Teste-de-connexion.png)
