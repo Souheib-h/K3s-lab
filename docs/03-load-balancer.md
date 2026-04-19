@@ -57,7 +57,7 @@ sudo haproxy -c -f /etc/haproxy/haproxy.cfg
 sudo netstat -tlnp | grep 6443
 ```
 
-![[Load-srvs-running.png]]
+![Servers load balance running ](img/Load-srvs-running.png)
 
 ---
 
@@ -122,18 +122,6 @@ sudo haproxy -c -f /etc/haproxy/haproxy.cfg
 sudo netstat -tlnp | grep -E ':80|:443'
 ```
 
-![[Load-agents-running.png]]
+![Agents load balance running ](img/Load-agents-running.png)
 
 ---
-
-## Checklist
-
-- [x] Load-srvs : HAProxy démarré, port 6443 en écoute
-- [x] Load-agents : HAProxy démarré, ports 80/443 en écoute
-- [ ] Stats accessibles sur `:9000` des deux VMs
-
----
-
-## Prochaine étape
-
-→ `04-cluster-serveurs.md` — Install K3s sur K3s-srv-1 avec `--datastore-endpoint` PostgreSQL, puis join K3s-srv-2
