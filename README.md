@@ -22,7 +22,7 @@ graph LR
 
 ---
 
-![Defautl diagrame de rancher](img/Default-diagrame.png)
+![Defautl diagrame de rancher](docs/img/Default-diagrame.png)
 ## Plan d'adressage
 
 | VM | Rôle | IP | OS |
