@@ -28,12 +28,12 @@ ssh -t k3s-admin@10.10.0.11 "sudo cat /var/lib/rancher/k3s/server/token"
 
 ```bash
 # Télécharger le binaire une seule fois
-curl -Lo ~/Alea/k3s https://github.com/k3s-io/k3s/releases/download/v1.35.5+k3s1/k3s
-chmod +x ~/Alea/k3s
+curl -Lo /tmp/k3s https://github.com/k3s-io/k3s/releases/download/v1.35.5+k3s1/k3s
+chmod +x /tmp/k3s
 
 # Distribuer sur les 3 workers
 for i in 31 32 33; do
-  scp ~/Alea/k3s k3s-admin@10.10.0.$i:/tmp/k3s &
+  scp /tmp/k3s k3s-admin@10.10.0.$i:/tmp/k3s &
 done
 wait && echo "Done"
 
