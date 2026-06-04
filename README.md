@@ -58,8 +58,8 @@ graph LR
 | 2     | Installation PostgreSQL     | [docs/02-base-de-donnees.md](docs/02-base-de-donnees.md)   | ✅      |
 | 3     | Configuration HAProxy       | [docs/03-load-balancer.md](docs/03-load-balancer.md)       | ✅      |
 | 4     | Installation nœuds serveurs | [docs/04-cluster-serveurs.md](docs/04-cluster-serveurs.md) | ✅      |
-| 5     | Installation nœuds agents   | [docs/05-cluster-agents.md](docs/05-cluster-agents.md)     | ⏳      |
-| 6 | Premier déploiement test | [docs/06-deploiement-test.md](docs/06-deploiement-test.md) | ⏳ |
+| 5     | Installation nœuds agents   | [docs/05-cluster-agents.md](docs/05-cluster-agents.md)     | ✅      |
+| 6     | Premier déploiement test    | [docs/06-deploiement-test.md](docs/06-deploiement-test.md) | ✅      |
 
 ---
 
