@@ -52,14 +52,15 @@ graph LR
 
 ## Documentation
 
-| Étape | Description | Lien | Status |
-|---|---|---|---|
-| 1 | Réseau & plan d'adressage | [docs/01-reseau.md](docs/01-reseau.md) | ✅ |
-| 2 | Installation PostgreSQL | [docs/02-base-de-donnees.md](docs/02-base-de-donnees.md) | ✅ |
-| 3 | Configuration HAProxy | [docs/03-load-balancer.md](docs/03-load-balancer.md) | ✅ |
-| 4 | Installation nœuds serveurs | [docs/04-cluster-serveurs.md](docs/04-cluster-serveurs.md) | ✅ |
-| 5 | Installation nœuds agents | [docs/05-cluster-agents.md](docs/05-cluster-agents.md) | ⏳ |
+| Étape | Description                 | Lien                                                       | Status |
+| ----- | --------------------------- | ---------------------------------------------------------- | ------ |
+| 1     | Réseau & plan d'adressage   | [docs/01-reseau.md](docs/01-reseau.md)                     | ✅      |
+| 2     | Installation PostgreSQL     | [docs/02-base-de-donnees.md](docs/02-base-de-donnees.md)   | ✅      |
+| 3     | Configuration HAProxy       | [docs/03-load-balancer.md](docs/03-load-balancer.md)       | ✅      |
+| 4     | Installation nœuds serveurs | [docs/04-cluster-serveurs.md](docs/04-cluster-serveurs.md) | ✅      |
+| 5     | Installation nœuds agents   | [docs/05-cluster-agents.md](docs/05-cluster-agents.md)     | ⏳      |
 | 6 | Premier déploiement test | [docs/06-deploiement-test.md](docs/06-deploiement-test.md) | ⏳ |
+
 ---
 
 ## Réseau
