@@ -25,16 +25,16 @@ graph LR
 ![Defautl diagrame de rancher](docs/img/Default-diagrame.png)
 ## Plan d'adressage
 
-| VM | Rôle | IP | OS |
-|----|------|----|----|
-| `Load-srvs` | Load Balancer — Control Plane | `10.10.0.10` | Alpine |
-| `K3s-srv-1` | Nœud Serveur 1 | `10.10.0.11` | Ubuntu 22.04 |
-| `K3s-srv-2` | Nœud Serveur 2 | `10.10.0.12` | Ubuntu 22.04 |
-| `K3s-db` | Datastore PostgreSQL | `10.10.0.20` | Ubuntu 22.04 |
-| `Load-agents` | Load Balancer — Workers | `10.10.0.30` | Alpine |
-| `K3s-agent-node-1` | Nœud Worker 1 | `10.10.0.31` | Ubuntu 22.04 |
-| `K3s-agent-node-2` | Nœud Worker 2 | `10.10.0.32` | Ubuntu 22.04 |
-| `K3s-agent-node-3` | Nœud Worker 3 | `10.10.0.33` | Ubuntu 22.04 |
+| VM                 | Rôle                          | IP           | OS           |
+| ------------------ | ----------------------------- | ------------ | ------------ |
+| `Load-srvs`        | Load Balancer — Control Plane | `10.10.0.10` | Alpine       |
+| `K3s-srv-1`        | Nœud Serveur 1                | `10.10.0.11` | Ubuntu 24.04 |
+| `K3s-srv-2`        | Nœud Serveur 2                | `10.10.0.12` | Ubuntu 24.04 |
+| `K3s-db`           | Datastore PostgreSQL          | `10.10.0.20` | Ubuntu 24.04 |
+| `Load-agents`      | Load Balancer — Workers       | `10.10.0.30` | Alpine       |
+| `K3s-agent-node-1` | Nœud Worker 1                 | `10.10.0.31` | Ubuntu 24.04 |
+| `K3s-agent-node-2` | Nœud Worker 2                 | `10.10.0.32` | Ubuntu 24.04 |
+| `K3s-agent-node-3` | Nœud Worker 3                 | `10.10.0.33` | Ubuntu 24.04 |
 
 ---
 
