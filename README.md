@@ -45,7 +45,7 @@ graph LR
 | **K3s**          | Distribution Kubernetes légère (Rancher)         |
 | **PostgreSQL**   | Datastore externe pour la HA                     |
 | **HAProxy**      | Load balancer control plane + workers            |
-| **Ubuntu 22.04** | OS des nœuds serveurs, agents et base de données |
+| **Ubuntu 24.04** | OS des nœuds serveurs, agents et base de données |
 | **Alpine Linux** | OS des load balancers                            |
 
 ---

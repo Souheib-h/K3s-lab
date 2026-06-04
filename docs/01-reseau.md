@@ -26,16 +26,16 @@ Edit → Connection Details → Virtual Networks → "+"
 
 ## Plan d'adressage
 
-|VM|Rôle|IP|MAC|OS|
-|---|---|---|---|---|
-|`Load-srvs`|Load Balancer — Control Plane|`10.10.0.10`|`52:54:00:a5:79:bf`|Alpine|
-|`K3s-srv-1`|Nœud Serveur 1|`10.10.0.11`|`52:54:00:89:5a:43`|Ubuntu 22.04|
-|`K3s-srv-2`|Nœud Serveur 2|`10.10.0.12`|`52:54:00:e2:34:df`|Ubuntu 22.04|
-|`K3s-db`|Datastore PostgreSQL|`10.10.0.20`|`52:54:00:98:ad:7e`|Ubuntu 22.04|
-|`Load-agents`|Load Balancer — Workers|`10.10.0.30`|`52:54:00:08:01:68`|Alpine|
-|`K3s-agent-node-1`|Nœud Worker 1|`10.10.0.31`|`52:54:00:80:0b:ca`|Ubuntu 22.04|
-|`K3s-agent-node-2`|Nœud Worker 2|`10.10.0.32`|`52:54:00:ea:e4:26`|Ubuntu 22.04|
-|`K3s-agent-node-3`|Nœud Worker 3|`10.10.0.33`|`52:54:00:e2:f2:2b`|Ubuntu 22.04|
+| VM                 | Rôle                          | IP           | MAC                 | OS           |
+| ------------------ | ----------------------------- | ------------ | ------------------- | ------------ |
+| `Load-srvs`        | Load Balancer — Control Plane | `10.10.0.10` | `52:54:00:a5:79:bf` | Alpine       |
+| `K3s-srv-1`        | Nœud Serveur 1                | `10.10.0.11` | `52:54:00:89:5a:43` | Ubuntu 24.04 |
+| `K3s-srv-2`        | Nœud Serveur 2                | `10.10.0.12` | `52:54:00:e2:34:df` | Ubuntu 24.04 |
+| `K3s-db`           | Datastore PostgreSQL          | `10.10.0.20` | `52:54:00:98:ad:7e` | Ubuntu 24.04 |
+| `Load-agents`      | Load Balancer — Workers       | `10.10.0.30` | `52:54:00:08:01:68` | Alpine       |
+| `K3s-agent-node-1` | Nœud Worker 1                 | `10.10.0.31` | `52:54:00:80:0b:ca` | Ubuntu 24.04 |
+| `K3s-agent-node-2` | Nœud Worker 2                 | `10.10.0.32` | `52:54:00:ea:e4:26` | Ubuntu 24.04 |
+| `K3s-agent-node-3` | Nœud Worker 3                 | `10.10.0.33` | `52:54:00:e2:f2:2b` | Ubuntu 24.04 |
 
 ---
 
