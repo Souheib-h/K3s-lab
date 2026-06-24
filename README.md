@@ -68,4 +68,4 @@ graph LR
 - **Bridge** : `virbr4`
 - **Sous-réseau** : `10.10.0.0/24`
 - **Passerelle** : `10.10.0.1`
-- **Mode** : NAT (accès internet via le host)
+- **Mode** : NAT (accès internet via le host)# TODO: Load-agents shutdown - redondant avec klipper-lb/Traefik
