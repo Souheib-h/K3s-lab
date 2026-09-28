@@ -19,6 +19,14 @@ NAME    TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
 nginx   NodePort   10.43.115.32   <none>        80:30275/TCP   0s
 ```
 
+### Version déclarative
+
+Le même test existe sous forme de manifest versionné, durci : image figée (`nginx-unprivileged:1.30.5-alpine`, non-root sur le port 8080), 2 réplicas répartis sur des workers différents, requests/limits, probes, et capabilities supprimées. Le NodePort reste `30275`.
+
+```bash
+sudo kubectl apply -f manifests/test/nginx.yaml
+```
+
 ---
 
 ## Vérification
@@ -53,5 +61,9 @@ Réponse attendue : page HTML `Welcome to nginx!`
 Le cluster K3s HA est opérationnel :
 
 - Le pod est schedulé sur un worker par le control-plane
-- Le trafic transite via `Load-agents` (HAProxy) vers le bon worker
-- La réponse HTTP confirme que le networking inter-pods fonctionne
+- Le NodePort `30275` répond sur l'IP du worker qui héberge le pod (`10.10.0.33`)
+- Pour valider aussi le réseau overlay (flannel VXLAN), interroger le NodePort sur un nœud qui **n'héberge pas** le pod : kube-proxy doit rediriger la requête à travers le cluster
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' http://10.10.0.31:30275   # 200 attendu
+```

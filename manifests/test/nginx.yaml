@@ -1,3 +1,4 @@
+# Déploiement de test (doc 06). NodePort 30275 → curl http://<IP d'un nœud>:30275
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -5,7 +6,7 @@ metadata:
   labels:
     app: nginx
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: nginx
@@ -14,11 +15,45 @@ spec:
       labels:
         app: nginx
     spec:
+      # Répartir les réplicas sur des workers différents
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: nginx
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
       containers:
-      - name: nginx
-        image: nginx
-        ports:
-        - containerPort: 80
+        - name: nginx
+          # Tag figé (branche stable) ; image non-root qui écoute sur 8080
+          image: nginxinc/nginx-unprivileged:1.30.5-alpine
+          ports:
+            - name: http
+              containerPort: 8080
+          resources:
+            requests:
+              cpu: 10m
+              memory: 16Mi
+            limits:
+              memory: 64Mi
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            periodSeconds: 20
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
 ---
 apiVersion: v1
 kind: Service
@@ -29,6 +64,7 @@ spec:
   selector:
     app: nginx
   ports:
-  - port: 80
-    targetPort: 80
-    nodePort: 30275
+    - name: http
+      port: 80
+      targetPort: http
+      nodePort: 30275
