@@ -19,6 +19,14 @@ NAME    TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
 nginx   NodePort   10.43.115.32   <none>        80:30275/TCP   0s
 ```
 
+### Version déclarative
+
+Le même test existe sous forme de manifest versionné, durci : image figée (`nginx-unprivileged:1.30.5-alpine`, non-root sur le port 8080), 2 réplicas répartis sur des workers différents, requests/limits, probes, et capabilities supprimées. Le NodePort reste `30275`.
+
+```bash
+sudo kubectl apply -f manifests/test/nginx.yaml
+```
+
 ---
 
 ## Vérification
