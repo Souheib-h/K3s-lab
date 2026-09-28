@@ -53,5 +53,9 @@ Réponse attendue : page HTML `Welcome to nginx!`
 Le cluster K3s HA est opérationnel :
 
 - Le pod est schedulé sur un worker par le control-plane
-- Le trafic transite via `Load-agents` (HAProxy) vers le bon worker
-- La réponse HTTP confirme que le networking inter-pods fonctionne
+- Le NodePort `30275` répond sur l'IP du worker qui héberge le pod (`10.10.0.33`)
+- Pour valider aussi le réseau overlay (flannel VXLAN), interroger le NodePort sur un nœud qui **n'héberge pas** le pod : kube-proxy doit rediriger la requête à travers le cluster
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' http://10.10.0.31:30275   # 200 attendu
+```

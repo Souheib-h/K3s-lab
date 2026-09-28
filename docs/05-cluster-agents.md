@@ -8,7 +8,7 @@
 | K3s-agent-node-2 | Nœud Worker 2 | 10.10.0.32 |
 | K3s-agent-node-3 | Nœud Worker 3 | 10.10.0.33 |
 
-Les workers reçoivent et exécutent les workloads (pods). Ils rejoignent le cluster via le load balancer `Load-agents` (10.10.0.30) qui pointe vers les deux control-plane nodes.
+Les workers reçoivent et exécutent les workloads (pods). Ils rejoignent le cluster via le load balancer du control plane `Load-srvs` (10.10.0.10:6443), qui répartit vers les nœuds serveurs.
 
 ---
 
