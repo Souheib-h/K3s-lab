@@ -1,6 +1,6 @@
 # k3s-lab
 
-> 📦 **Projet archivé (septembre 2026).** Lab d'apprentissage terminé, conservé en lecture seule comme référence. Il est remplacé par un cluster **kubeadm** (préparation CKA) : les corrections ne sont plus appliquées ici. Les limites relevées lors de l'audit sont listées dans [Statut du projet et limites connues](#statut-du-projet-et-limites-connues) et servent de checklist de départ pour le nouveau cluster.
+> 📦 **Projet archivé (septembre 2026).** Lab d'apprentissage terminé, conservé en lecture seule comme référence. Il est remplacé par un cluster **kubeadm** (préparation CKA) : les corrections ne sont plus appliquées ici. Les limites relevées lors de l'audit sont listées dans [Statut du projet et limites connues](#statut-du-projet-et-limites-connues) ; la suite est décrite dans [08 — Suite : du lab K3s au cluster kubeadm](docs/08-suite-kubeadm.md).
 
 > Cluster K3s en mode Haute-Disponibilité avec datastore PostgreSQL externe.  
 > Lab d'apprentissage Kubernetes sur VMs KVM locales.
@@ -69,6 +69,7 @@ graph LR
 | 5     | Installation nœuds agents   | [docs/05-cluster-agents.md](docs/05-cluster-agents.md)     | ✅      |
 | 6     | Premier déploiement test    | [docs/06-deploiement-test.md](docs/06-deploiement-test.md) | ✅      |
 | 7     | Ajout K3s-srv-3, retrait Load-agents | [docs/07-ajout-srv3.md](docs/07-ajout-srv3.md) | ✅      |
+| 8     | Suite : checklist du cluster kubeadm | [docs/08-suite-kubeadm.md](docs/08-suite-kubeadm.md) | ➡️      |
 
 ---
 
