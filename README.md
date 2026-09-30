@@ -1,5 +1,7 @@
 # k3s-lab
 
+> 📦 **Projet archivé (septembre 2026).** Lab d'apprentissage terminé, conservé en lecture seule comme référence. Il est remplacé par un cluster **kubeadm** (préparation CKA) : les corrections ne sont plus appliquées ici. Les limites relevées lors de l'audit sont listées dans [Statut du projet et limites connues](#statut-du-projet-et-limites-connues) et servent de checklist de départ pour le nouveau cluster.
+
 > Cluster K3s en mode Haute-Disponibilité avec datastore PostgreSQL externe.  
 > Lab d'apprentissage Kubernetes sur VMs KVM locales.
 
