@@ -77,3 +77,22 @@ graph LR
 - **Passerelle** : `10.10.0.1`
 - **Mode** : NAT (accès internet via le host)
 
+---
+
+## Statut du projet et limites connues
+
+Ce cluster est un **lab d'apprentissage** : il a servi à comprendre Kubernetes (HA du control plane, datastore externe, load balancing) avant de passer à un cluster **kubeadm** (préparation CKA). Il n'évoluera plus. Les points ci-dessous ont été relevés lors d'un audit (septembre 2026) et **vérifiés sur le lab** ; ils sont acceptés en l'état et servent de checklist de départ pour le cluster kubeadm.
+
+| # | Limite | Risque | Pour le cluster kubeadm |
+|---|---|---|---|
+| 1 | Le ClusterRole de scraping Prometheus (K3s-lab-monitoring) inclut `nodes/proxy` : `kubectl auth can-i get nodes/proxy` répond `yes` pour son ServiceAccount | Le droit `get nodes/proxy` donne accès aux endpoints `/exec`, `/run`, `/pods` du kubelet : un token volé permet d'exécuter des commandes dans les pods | Ne donner que `nodes/metrics` (get) pour scraper `/metrics` et `/metrics/cadvisor` |
+| 2 | Prometheus scrape les kubelets avec `insecure_skip_verify: true` | Le token est envoyé à quiconque répond sur `:10250` | Vérifier avec le CA du cluster (`ca_file`) |
+| 3 | Le backend HAProxy de `Load-srvs` ne contient que `srv1` et `srv2` : `srv3` n'a pas été ajouté à l'étape 7 | Si srv-1 et srv-2 tombent, l'API est injoignable via le LB alors que srv-3 fonctionne | Tous les control planes derrière le LB, page de stats avec un vrai mot de passe (ici `admin:admin`) |
+| 4 | Le mot de passe du datastore est passé en ligne de commande (`--datastore-endpoint=postgres://k3s:…@…`) : il est stocké dans `k3s.service` (lisible par tous) et figure dans les docs 02, 04 et 07 de ce repo public | Accès complet à l'état du cluster (Secrets non chiffrés) depuis toute machine autorisée par `pg_hba` | Secrets de config dans un fichier `0600`, chiffrement des Secrets au repos (`EncryptionConfiguration`), jamais de mot de passe dans le repo |
+| 5 | `pg_hba.conf` autorise tout `10.10.0.0/24` en `md5` | N'importe quel nœud, ou un pod, peut tenter de se connecter à la base | Accès limité aux control planes, `scram-sha-256` (sans objet avec etcd) |
+| 6 | `K3s-db` et `Load-srvs` n'existent qu'en un exemplaire | Points uniques de défaillance : le cluster n'est pas réellement HA | etcd empilé sur 3 control planes, LB doublé (keepalived + VIP) |
+| 7 | La migration prévue vers etcd embarqué (doc 07) n'est pas possible sur place : K3s ne sait convertir que depuis SQLite, pas depuis un datastore externe | Il faudrait reconstruire le cluster | Sans objet : le cluster kubeadm part directement sur etcd |
+| 8 | Versions d'OS mixtes : Ubuntu 24.04 sur 5 nœuds, 26.04 sur srv-3 | Comportements différents selon le nœud | Même image de base pour tous les nœuds |
+
+La sécurité réseau autour du cluster (règles OPNsense par flux, isolation du bastion) est, elle, traitée et vérifiée dans [K3s-lab-monitoring](https://github.com/Souheib-h/K3s-lab-monitoring) (ADR-016 amendement, ADR-017).
+
